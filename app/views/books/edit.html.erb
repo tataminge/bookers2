@@ -1,0 +1,26 @@
+<h1>editing Book</h1>
+
+<!--バリテーションでエラーになったとき-->
+<% if @book.errors.any? %>
+  <%= @book.errors.count %> errors prohibited this book from being saved:
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @book do |f| %>
+  <p>Title</p>
+  <%= f.text_field :title %>
+
+  <p>Body</p>
+  <%= f.text_area :body %>
+
+  <p><%= f.submit 'Update Book' %></p>
+<% end %>
+
+  <span>
+    <%= link_to "show", book_path(@book.id) %> |
+    <%= link_to "back", "/books" %>
+  </span>

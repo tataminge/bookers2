@@ -1,0 +1,35 @@
+
+<div class = "container">
+  <div class = "row">
+
+    <%= render 'list', book: @book %>
+
+
+    <div class = "mx_auto col-7">
+      <h2>Books</h2>
+      <table class="table">
+        <thead>
+        <tr>
+            <th colspan="1"></th>
+            <th scope="col">Title</th>
+            <th scope="col">Opinion</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @books.each do |book| %>
+        <tr>
+          <td>
+            <%= link_to book_path(book.id) do %>
+              <%= image_tag book.user.get_profile_image(100,100) %>
+            <% end %>
+          </td>
+          <td><%= book.title %></td>
+          <td><%= book.body %></td>
+        <% end %>
+        </tr>
+      </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

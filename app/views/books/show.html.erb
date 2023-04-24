@@ -1,0 +1,24 @@
+
+<div class = "container">
+  <div class = "row">
+
+    <%= render 'list', book: @book %>
+
+
+    <div class = "mx_auto col-7">
+      <h2>Book detail</h2>
+      <table class="table">
+        <tbody>
+        <tr>
+          <td><%= @book.title %></td>
+          <td><%= @book.body %></td>
+          <td><%= link_to "edit", edit_book_path(@book.id), class: "btn btn-success btn-sm" %></td>
+          <td><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger btn-sm" %></td>
+        </tr>
+      </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+

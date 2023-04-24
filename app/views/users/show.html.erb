@@ -1,0 +1,12 @@
+<!-- ユーザーの投稿一覧 -->
+
+<% @books.each do |book| %>
+<div>
+  <%= link_to book_path(book.id) do %>
+     title：<%= book.title %>
+  <% end %>
+  <p>body：<%= book.body %></p>
+  <p>ユーザーネーム：<%= book.user.name %></p>
+  <%= link_to "edit", edit_book_path(book.id) %> |
+</div>
+<% end %>
