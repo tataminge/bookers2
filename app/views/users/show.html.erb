@@ -1,12 +1,39 @@
 <!-- ユーザーの投稿一覧 -->
 
-<% @books.each do |book| %>
-<div>
-  <%= link_to book_path(book.id) do %>
-     title：<%= book.title %>
-  <% end %>
-  <p>body：<%= book.body %></p>
-  <p>ユーザーネーム：<%= book.user.name %></p>
-  <%= link_to "edit", edit_book_path(book.id) %> |
+<div class = "container">
+  <div class = "row">
+
+    <%= render 'books/list', book: @book %>
+
+
+    <div class = "mx_auto col-7">
+      <h2>Books</h2>
+      <table class="table">
+        <thead>
+        <tr>
+            <th colspan="1"></th>
+            <th scope="col">Title</th>
+            <th scope="col">Opinion</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @books.each do |book| %>
+        <tr>
+          <td>
+            <%= link_to book.user do %>
+              <%= image_tag book.user.get_profile_image(100,100) %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to book_path(book.id) do %>
+            <%= book.title %>
+            <% end %>
+          </td>
+          <td><%= book.body %></td>
+        <% end %>
+        </tr>
+      </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-<% end %>

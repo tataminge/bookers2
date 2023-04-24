@@ -1,4 +1,8 @@
-<h1>editing Book</h1>
+<div class = "container">
+  <div class = "row">
+    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+
+<h2>Editing Book</h2>
 
 <!--バリテーションでエラーになったとき-->
 <% if @book.errors.any? %>
@@ -14,13 +18,17 @@
   <p>Title</p>
   <%= f.text_field :title %>
 
-  <p>Body</p>
+  <p>Opinion</p>
   <%= f.text_area :body %>
 
-  <p><%= f.submit 'Update Book' %></p>
+  <p><%= f.submit 'Update Book', class: "btn btn-success btn-sm" %></p>
 <% end %>
 
   <span>
     <%= link_to "show", book_path(@book.id) %> |
     <%= link_to "back", "/books" %>
   </span>
+
+      </div>
+  </div>
+</div>

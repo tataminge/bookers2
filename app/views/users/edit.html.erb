@@ -1,8 +1,25 @@
-<h2>プロフィール編集</h2>
+<div class = "container">
+  <div class = "row">
+    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+
+<h2>Use info</h2>
 <%= form_with model: @user do |f| %>
-  <label for="inputName">Name</label>
+  <label for="inputName">Name</label><br>
   <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前" %>
-  <label for="inputImage">PlofileImage</label>
+  <br>
+  <label for="inputImage">PlofileImage</label><br>
   <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
-  <%= f.submit "画像を変更" %>
+  <br>
+  <label for="inputIntroduction">Introduction</label><br>
+  <%= f.text_field :introduction, class: "form-control" %>
+  <br>
+
+
+
+  <%= f.submit "Update User", class:"btn btn-sm btn-secondary " %>
 <% end %>
+
+
+    </div>
+  </div>
+</div>

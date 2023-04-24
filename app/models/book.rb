@@ -17,7 +17,6 @@ class Book < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
-  validates :body, presence: true, length: { maximum: 200 }
 
 
 end
