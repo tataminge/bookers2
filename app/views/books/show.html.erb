@@ -1,24 +1,62 @@
 
-<div class = "container">
+<div class = "container px-5 px-sm-0r">
   <div class = "row">
+    <div class = "col-md-3">
 
-    <%= render 'list', book: @book %>
+    <div class= "notice">
+      <%= flash[:notice] %>
+    </div>
 
 
-    <div class = "mx_auto col-7">
+      <h2>User info</h2>
+
+      <%= image_tag @book.user.get_profile_image(100,100) %>
+      <table class="table">
+      <tr>
+        <th scope="col">name</th>
+        <td><%= @book.user.name %></td>
+      </tr>
+      <tr>
+        <th scope="col">introduction</th>
+        <td><%= @book.user.introduction %></td>
+      </tr>
+      </table>
+
+      <div class= "row">
+        <%= link_to edit_user_path(@book.user.id), class: "btn btn-outline-secondary btn-lg btn-block", method: :get do %>
+        <i class="fas fa-user-cog"></i>
+        <% end %>
+      </div>
+
+
+    <%= render 'list', book: @book_new %>
+
+    </div>
+    <div class = "col-md-8 offset-md-1">
       <h2>Book detail</h2>
       <table class="table">
         <tbody>
         <tr>
-          <td><%= @book.title %></td>
+          <td>
+            <%= link_to @book.user do %>
+              <%= image_tag @book.user.get_profile_image(100,100) %>
+              <%= @book.user.name %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to book_path(@book.id) do %>
+              <%= @book.title %>
+            <% end %>
+          </td>
           <td><%= @book.body %></td>
-          <td><%= link_to "edit", edit_book_path(@book.id), class: "btn btn-success btn-sm" %></td>
-          <td><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger btn-sm" %></td>
+          <% if @book.user.id == current_user.id %>
+            <td><%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-success btn-sm" %></td>
+            <td><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger btn-sm" %></td>
+          <% end %>
         </tr>
       </tbody>
       </table>
     </div>
-
   </div>
 </div>
 

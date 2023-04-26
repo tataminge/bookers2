@@ -1,11 +1,37 @@
 
-<div class = "container">
+<div class = "container px-5 px-sm-0">
   <div class = "row">
+    <div class = "col-md-3">
+
+    <div class= "notice">
+      <%= flash[:notice] %>
+    </div>
+
+
+      <h2>User info</h2>
+
+      <%= image_tag current_user.get_profile_image(100,100) %>
+      <table class="table">
+      <tr>
+        <th scope="col">name</th>
+        <td><%= current_user.name %></td>
+      </tr>
+      <tr>
+        <th scope="col">introduction</th>
+        <td><%= current_user.introduction %></td>
+      </tr>
+      </table>
+
+      <div class= "row">
+        <%= link_to edit_user_path(current_user.id), class: "btn btn-outline-secondary btn-lg btn-block", method: :get do %>
+        <i class="fas fa-user-cog"></i>
+        <% end %>
+      </div>
 
     <%= render 'list', book: @book %>
 
-
-    <div class = "mx_auto col-7">
+    </div>
+    <div class = "col-md-8 offset-md-1">
       <h2>Books</h2>
       <table class="table">
         <thead>
@@ -16,14 +42,19 @@
         </tr>
         </thead>
         <tbody>
+
         <% @books.each do |book| %>
         <tr>
           <td>
-            <%= link_to book_path(book.id) do %>
+            <%= link_to book.user do %>
               <%= image_tag book.user.get_profile_image(100,100) %>
             <% end %>
           </td>
-          <td><%= book.title %></td>
+          <td>
+            <%= link_to book_path(book.id) do %>
+            <%= book.title %>
+            <% end %>
+          </td>
           <td><%= book.body %></td>
         <% end %>
         </tr>

@@ -2,6 +2,10 @@
   <div class = "row">
     <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
 
+      <div class= "notice">
+        <%= flash[:notice] %>
+      </div>
+
 <h2>Editing Book</h2>
 
 <!--バリテーションでエラーになったとき-->
@@ -25,8 +29,8 @@
 <% end %>
 
   <span>
-    <%= link_to "show", book_path(@book.id) %> |
-    <%= link_to "back", "/books" %>
+    <%= link_to "Show", book_path(@book.id) %> |
+    <%= link_to "Back", "/books" %>
   </span>
 
       </div>
